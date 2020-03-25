@@ -13,10 +13,10 @@ namespace Event_Mgnt_System.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EventDBEntities : DbContext
+    public partial class EventDBEntities1 : DbContext
     {
-        public EventDBEntities()
-            : base("name=EventDBEntities")
+        public EventDBEntities1()
+            : base("name=EventDBEntities1")
         {
         }
     

@@ -10,7 +10,7 @@ namespace Event_Mgnt_System.Controllers
 {
     public class UserController : Controller
     {
-        EventDBEntities db = new EventDBEntities();
+        EventDBEntities1 db = new EventDBEntities1();
 
         // GET: User
         public ActionResult Index(int ?page)

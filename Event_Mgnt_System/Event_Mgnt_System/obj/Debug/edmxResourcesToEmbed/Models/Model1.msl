@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EventDBModelStoreContainer" CdmEntityContainer="EventDBEntities">
+  <EntityContainerMapping StorageEntityContainer="EventDBModelStoreContainer" CdmEntityContainer="EventDBEntities1">
     <EntitySetMapping Name="Booking_Events">
       <EntityTypeMapping TypeName="EventDBModel.Booking_Events">
         <MappingFragment StoreEntitySet="Booking_Events">
@@ -13,7 +13,6 @@
           <ScalarProperty Name="Event_Date" ColumnName="Event_Date" />
           <ScalarProperty Name="Event_time" ColumnName="Event_time" />
           <ScalarProperty Name="Guest_Number" ColumnName="Guest_Number" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Approval" ColumnName="Approval" />
           <ScalarProperty Name="Package_ID" ColumnName="Package_ID" />
         </MappingFragment>
@@ -38,10 +37,10 @@
     <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="EventDBModel.Event">
         <MappingFragment StoreEntitySet="Events">
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
           <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
           <ScalarProperty Name="event_image" ColumnName="event_image" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

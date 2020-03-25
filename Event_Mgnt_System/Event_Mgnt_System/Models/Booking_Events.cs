@@ -23,7 +23,6 @@ namespace Event_Mgnt_System.Models
         public Nullable<System.DateTime> Event_Date { get; set; }
         public Nullable<System.TimeSpan> Event_time { get; set; }
         public Nullable<int> Guest_Number { get; set; }
-        public string Status { get; set; }
         public string Approval { get; set; }
         public Nullable<int> Package_ID { get; set; }
     

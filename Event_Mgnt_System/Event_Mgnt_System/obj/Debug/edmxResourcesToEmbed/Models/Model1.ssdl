@@ -13,7 +13,6 @@
     <Property Name="Event_Date" Type="date" />
     <Property Name="Event_time" Type="time" Precision="7" />
     <Property Name="Guest_Number" Type="int" />
-    <Property Name="Status" Type="char" MaxLength="10" />
     <Property Name="Approval" Type="char" MaxLength="10" />
     <Property Name="Package_ID" Type="int" />
   </EntityType>

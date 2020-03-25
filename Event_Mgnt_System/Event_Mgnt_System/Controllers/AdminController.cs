@@ -13,7 +13,7 @@ namespace Event_Mgnt_System.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        EventDBEntities db = new EventDBEntities();
+        EventDBEntities1 db = new EventDBEntities1();
             [HttpGet]
         public ActionResult Login()
         {

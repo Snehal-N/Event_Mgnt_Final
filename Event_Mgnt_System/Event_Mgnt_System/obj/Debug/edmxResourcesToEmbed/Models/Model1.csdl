@@ -13,7 +13,6 @@
     <Property Name="Event_Date" Type="DateTime" Precision="0" />
     <Property Name="Event_time" Type="Time" Precision="7" />
     <Property Name="Guest_Number" Type="Int32" />
-    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Approval" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Package_ID" Type="Int32" />
     <NavigationProperty Name="Event" Relationship="Self.FK_Events_ID" FromRole="Booking_Events" ToRole="Events" />
@@ -41,8 +40,8 @@
     <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Event_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="event_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Booking_Events" Relationship="Self.FK_Events_ID" FromRole="Events" ToRole="Booking_Events" />
     <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Booking_Events" Relationship="Self.FK_Events_ID" FromRole="Events" ToRole="Booking_Events" />
   </EntityType>
   <EntityType Name="FoodItem">
     <Key>
@@ -125,7 +124,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EventDBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="EventDBEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Booking_Events" EntityType="Self.Booking_Events" />
     <EntitySet Name="BookingFlowers" EntityType="Self.BookingFlower" />
     <EntitySet Name="DecorationEquipments" EntityType="Self.DecorationEquipment" />
