@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking_Events">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Book_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Event_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Event_ID" Type="int" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Event_Date" Type="date" />
+    <Property Name="Event_time" Type="time" Precision="7" />
+    <Property Name="Guest_Number" Type="int" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="Approval" Type="char" MaxLength="10" />
+    <Property Name="Package_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="BookingFlowers">
+    <Key>
+      <PropertyRef Name="BookingFlower_ID" />
+    </Key>
+    <Property Name="BookingFlower_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Flower_Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="DecorationEquipments">
+    <Key>
+      <PropertyRef Name="DE_ID" />
+    </Key>
+    <Property Name="DE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DE_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Event_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="event_image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoodItems">
+    <Key>
+      <PropertyRef Name="Food_ID" />
+    </Key>
+    <Property Name="Food_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Food_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="Package_ID" />
+    </Key>
+    <Property Name="Package_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Package_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="ConfirmPassword" Type="varchar" MaxLength="20" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNumber" Type="numeric" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EventDB.dbo.User_Feedback' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="User_Feedback">
+    <Key>
+      <PropertyRef Name="fee_img" />
+    </Key>
+    <Property Name="u_name" Type="varchar" MaxLength="30" />
+    <Property Name="rating" Type="varchar" MaxLength="20" />
+    <Property Name="details" Type="varchar" MaxLength="50" />
+    <Property Name="fee_img" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Events_ID">
+    <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_ID">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Package_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="Package_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_ID">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EventDBModelStoreContainer">
+    <EntitySet Name="Booking_Events" EntityType="Self.Booking_Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookingFlowers" EntityType="Self.BookingFlowers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DecorationEquipments" EntityType="Self.DecorationEquipments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodItems" EntityType="Self.FoodItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Feedback" EntityType="Self.User_Feedback" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[User_Feedback].[u_name] AS [u_name], 
+[User_Feedback].[rating] AS [rating], 
+[User_Feedback].[details] AS [details], 
+[User_Feedback].[fee_img] AS [fee_img]
+FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Events_ID" Association="Self.FK_Events_ID">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_ID" Association="Self.FK_Package_ID">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_ID" Association="Self.FK_User_ID">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

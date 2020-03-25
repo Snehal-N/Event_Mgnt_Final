@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventDBModelStoreContainer" CdmEntityContainer="EventDBEntities">
+    <EntitySetMapping Name="Booking_Events">
+      <EntityTypeMapping TypeName="EventDBModel.Booking_Events">
+        <MappingFragment StoreEntitySet="Booking_Events">
+          <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Event_Date" ColumnName="Event_Date" />
+          <ScalarProperty Name="Event_time" ColumnName="Event_time" />
+          <ScalarProperty Name="Guest_Number" ColumnName="Guest_Number" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Approval" ColumnName="Approval" />
+          <ScalarProperty Name="Package_ID" ColumnName="Package_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingFlowers">
+      <EntityTypeMapping TypeName="EventDBModel.BookingFlower">
+        <MappingFragment StoreEntitySet="BookingFlowers">
+          <ScalarProperty Name="BookingFlower_ID" ColumnName="BookingFlower_ID" />
+          <ScalarProperty Name="Flower_Name" ColumnName="Flower_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DecorationEquipments">
+      <EntityTypeMapping TypeName="EventDBModel.DecorationEquipment">
+        <MappingFragment StoreEntitySet="DecorationEquipments">
+          <ScalarProperty Name="DE_ID" ColumnName="DE_ID" />
+          <ScalarProperty Name="DE_Name" ColumnName="DE_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="EventDBModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
+          <ScalarProperty Name="event_image" ColumnName="event_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodItems">
+      <EntityTypeMapping TypeName="EventDBModel.FoodItem">
+        <MappingFragment StoreEntitySet="FoodItems">
+          <ScalarProperty Name="Food_ID" ColumnName="Food_ID" />
+          <ScalarProperty Name="Food_Name" ColumnName="Food_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="EventDBModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="Package_ID" ColumnName="Package_ID" />
+          <ScalarProperty Name="Package_Name" ColumnName="Package_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrations">
+      <EntityTypeMapping TypeName="EventDBModel.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="EventDBModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="ad_username" ColumnName="ad_username" />
+          <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Feedback">
+      <EntityTypeMapping TypeName="EventDBModel.User_Feedback">
+        <MappingFragment StoreEntitySet="User_Feedback">
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="fee_img" ColumnName="fee_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking_Events">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Book_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Event_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Event_ID" Type="Int32" />
+    <Property Name="Venue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Event_Date" Type="DateTime" Precision="0" />
+    <Property Name="Event_time" Type="Time" Precision="7" />
+    <Property Name="Guest_Number" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Approval" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Package_ID" Type="Int32" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Events_ID" FromRole="Booking_Events" ToRole="Events" />
+    <NavigationProperty Name="Package" Relationship="Self.FK_Package_ID" FromRole="Booking_Events" ToRole="Packages" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK_User_ID" FromRole="Booking_Events" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="BookingFlower">
+    <Key>
+      <PropertyRef Name="BookingFlower_ID" />
+    </Key>
+    <Property Name="BookingFlower_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Flower_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DecorationEquipment">
+    <Key>
+      <PropertyRef Name="DE_ID" />
+    </Key>
+    <Property Name="DE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DE_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="event_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Booking_Events" Relationship="Self.FK_Events_ID" FromRole="Events" ToRole="Booking_Events" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoodItem">
+    <Key>
+      <PropertyRef Name="Food_ID" />
+    </Key>
+    <Property Name="Food_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Food_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Package_ID" />
+    </Key>
+    <Property Name="Package_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Package_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Booking_Events" Relationship="Self.FK_Package_ID" FromRole="Packages" ToRole="Booking_Events" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="Decimal" Precision="10" Scale="0" />
+    <NavigationProperty Name="Booking_Events" Relationship="Self.FK_User_ID" FromRole="Registration" ToRole="Booking_Events" />
+  </EntityType>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Feedback">
+    <Key>
+      <PropertyRef Name="fee_img" />
+    </Key>
+    <Property Name="u_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fee_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Events_ID">
+    <End Role="Events" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_ID">
+    <End Role="Packages" Type="Self.Package" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Package_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="Package_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_ID">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Booking_Events" Type="Self.Booking_Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Booking_Events">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EventDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Booking_Events" EntityType="Self.Booking_Events" />
+    <EntitySet Name="BookingFlowers" EntityType="Self.BookingFlower" />
+    <EntitySet Name="DecorationEquipments" EntityType="Self.DecorationEquipment" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="FoodItems" EntityType="Self.FoodItem" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
+    <EntitySet Name="User_Feedback" EntityType="Self.User_Feedback" />
+    <AssociationSet Name="FK_Events_ID" Association="Self.FK_Events_ID">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_ID" Association="Self.FK_Package_ID">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_ID" Association="Self.FK_User_ID">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Booking_Events" EntitySet="Booking_Events" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
