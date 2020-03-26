@@ -187,6 +187,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\footer.css" />
+    <Content Include="Content\images\front.png" />
+    <Content Include="Content\images\Logo.png" />
+    <Content Include="Content\images\Logo2.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Pagination.css" />
     <Content Include="favicon.ico" />
@@ -244,6 +248,7 @@
     <Content Include="Views\User\Signup.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
+    <Content Include="Views\Shared\_SignupLayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
