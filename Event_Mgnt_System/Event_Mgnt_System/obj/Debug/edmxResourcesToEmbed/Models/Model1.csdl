@@ -18,6 +18,7 @@
     <NavigationProperty Name="Event" Relationship="Self.FK_Events_ID" FromRole="Booking_Events" ToRole="Events" />
     <NavigationProperty Name="Package" Relationship="Self.FK_Package_ID" FromRole="Booking_Events" ToRole="Packages" />
     <NavigationProperty Name="Registration" Relationship="Self.FK_User_ID" FromRole="Booking_Events" ToRole="Registration" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="BookingFlower">
     <Key>

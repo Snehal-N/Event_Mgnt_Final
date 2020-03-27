@@ -25,6 +25,7 @@ namespace Event_Mgnt_System.Models
         public Nullable<int> Guest_Number { get; set; }
         public string Approval { get; set; }
         public Nullable<int> Package_ID { get; set; }
+        public string email { get; set; }
     
         public virtual Event Event { get; set; }
         public virtual Package Package { get; set; }

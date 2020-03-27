@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Booking_Events">
       <EntityTypeMapping TypeName="EventDBModel.Booking_Events">
         <MappingFragment StoreEntitySet="Booking_Events">
+          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="User_Name" ColumnName="User_Name" />

@@ -22,7 +22,7 @@ namespace Event_Mgnt_System.Controllers
 
             IPagedList<Event> stu = list.ToPagedList(pageindex, pagesize);
 
-
+            
             return View(stu);
             
         }
@@ -68,6 +68,58 @@ namespace Event_Mgnt_System.Controllers
 
             }
             return View();
+        }
+
+        //public ActionResult BookEvent()
+        //{
+        //    //List<Event> li = db.Events.ToList();
+        //    //ViewBag.eventlist = new SelectList(li, "Event_ID", "Event_Type");
+
+        //    return View();
+        //}
+        
+        public ActionResult BookEvent(String Name)
+        {
+            ViewBag.Name = Name;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BookEvent(Booking_Events ev, String Name)
+        {
+            Booking_Events bv = new Booking_Events();
+            Registration r = db.Registrations.Where(x => x.Email_ID == ev.email).Single();
+
+            Event e = db.Events.Where(x => x.Event_Type == ev.Event_Type).Single();
+
+            bv.Venue = ev.Venue;
+            bv.Event_Date = ev.Event_Date;
+            bv.Event_time = ev.Event_time;
+            bv.Guest_Number = ev.Guest_Number;
+            bv.email = ev.email;
+            bv.Event_Type =Name;
+
+
+            if(r!=null)
+            {
+                bv.User_ID = r.User_ID;
+                bv.User_Name = r.User_Name;
+            }
+            if (e != null)
+            {
+                bv.Event_ID = e.Event_ID;
+            }
+           
+
+            db.Booking_Events.Add(bv);
+            db.SaveChanges();
+            return RedirectToAction("UserHome");
+
+
+
+
+          
         }
 
         public ActionResult UserHome()

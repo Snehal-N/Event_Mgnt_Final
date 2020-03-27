@@ -15,6 +15,7 @@
     <Property Name="Guest_Number" Type="int" />
     <Property Name="Approval" Type="char" MaxLength="10" />
     <Property Name="Package_ID" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="BookingFlowers">
     <Key>
