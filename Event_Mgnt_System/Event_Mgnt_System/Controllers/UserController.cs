@@ -15,16 +15,18 @@ namespace Event_Mgnt_System.Controllers
         // GET: User
         public ActionResult Index(int ?page)
         {
-            int pagesize = 9, pageindex = 1;
-            pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+          
+                int pagesize = 9, pageindex = 1;
+                pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
 
-            var list = db.Events.Where(x => x.Status == 0).OrderByDescending(x => x.Event_ID).ToList();
+                var list = db.Events.Where(x => x.Status == 0).OrderByDescending(x => x.Event_ID).ToList();
 
-            IPagedList<Event> stu = list.ToPagedList(pageindex, pagesize);
+                IPagedList<Event> stu = list.ToPagedList(pageindex, pagesize);
 
+
+                return View(stu);
             
-            return View(stu);
-            
+
         }
         [HttpGet]
         public ActionResult Signup()
@@ -59,7 +61,7 @@ namespace Event_Mgnt_System.Controllers
             {
 
                 Session["User_ID"] = ad.User_ID.ToString();
-                return RedirectToAction("UserHome");
+                return RedirectToAction("Index");
 
             }
             else
@@ -114,12 +116,26 @@ namespace Event_Mgnt_System.Controllers
 
             db.Booking_Events.Add(bv);
             db.SaveChanges();
-            return RedirectToAction("UserHome");
+            return RedirectToAction("WaitPage");
 
+   }
 
+        public ActionResult WaitPage()
+        {
+            return View();        
+        }
 
+        public ActionResult Logout()
+        {
 
-          
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
         }
 
         public ActionResult UserHome()

@@ -16,22 +16,52 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
+<style>
+
+    .im:hover{
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+              -moz-box-shadow: 10px 10px 5px #808080;
+           -webkit-box-shadow: 10px 10px 5px #808080;
+           box-shadow: 10px 10px 5px #808080;
+           -moz-border-radius:25px;
+          -webkit-border-radius:25px;
+     
+            
+    }
+
+</style>
 <body>
 
+    <div class="container" style="height:1150px; ">
+        <div class="row">
+            <div class="col-lg-12" style="height:100px;">
 
 
+               
 
-        <div class="row" style="margin-bottom:40px">
+
+            </div>
+
+        </div>
+
+
+        <div class="row" style="margin-bottom:40px" id="event">
             @if (Model != null)
             {
                 foreach (var item in Model)
                 {
-                    <div class="col-lg-4 col-md-4" style="height:200px;margin-top:60px">
-                        
-                        <a href="@Url.Action("BookEvent","User", new {Name=@item.Event_Type})"><img src="@Url.Content(item.event_image)" style=" height:80%;width:100% ;border-radius:5px 5px 5px 5px; margin-left:5px" /></a>
-                        <h4 style="color:#000000; font-family:'Arial Rounded MT';text-align:center">@item.Event_Type</h4>
-                        
-                    </div>
+            <div class="col-lg-4 col-md-4" style="height:200px; margin-top:100px">
+
+              <a href="@Url.Action("BookEvent","User", new {Name=@item.Event_Type})"><img src="@Url.Content(item.event_image)" class="im" style=" height: 100%;
+        width: 100%;
+        border-radius: 20px 20px 20px 20px;
+        margin-left: 5px" /></a>
+                <div style=" color:white; font-size:30px; font-weight:200; text-align:center;font-family:Stencil;   position:absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">@item.Event_Type</div>
+       
+
+
+            </div>
 
                 }
             }

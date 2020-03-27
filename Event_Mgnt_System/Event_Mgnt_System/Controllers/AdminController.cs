@@ -86,7 +86,14 @@ namespace Event_Mgnt_System.Controllers
         }
 
 
+        public ActionResult DeleteEvent(int id)
+        {
+            Event e = db.Events.Where(x => x.Event_ID == id).Single();
+            db.Events.Remove(e);
+            db.SaveChanges();
 
+            return RedirectToAction("ViewEvents");
+        }
 
 
 
