@@ -13,7 +13,7 @@
     <Property Name="Event_Date" Type="DateTime" Precision="0" />
     <Property Name="Event_time" Type="Time" Precision="7" />
     <Property Name="Guest_Number" Type="Int32" />
-    <Property Name="Approval" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Approval" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
     <Property Name="Package_ID" Type="Int32" />
     <NavigationProperty Name="Event" Relationship="Self.FK_Events_ID" FromRole="Booking_Events" ToRole="Events" />
     <NavigationProperty Name="Package" Relationship="Self.FK_Package_ID" FromRole="Booking_Events" ToRole="Packages" />

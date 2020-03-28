@@ -94,6 +94,38 @@ namespace Event_Mgnt_System.Controllers
 
             return RedirectToAction("ViewEvents");
         }
+        public int bi;
+        public ActionResult AdminApproval(int? page,int id=0)
+        {
+            ViewBag.bid = id;
+              bi = id;
+
+            int pagesize = 9, pageindex = 1;
+            pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+
+            var list = db.Booking_Events.Where(x => x.Approval == null).OrderByDescending(x => x.Event_ID).ToList();
+
+            IPagedList<Booking_Events> stu = list.ToPagedList(pageindex, pagesize);
+
+            if (bi != 0)
+            {
+                Booking_Events e = db.Booking_Events.Where(x => x.Book_ID == bi).Single();
+                db.Booking_Events.Remove(e);
+                db.SaveChanges();
+                e.Approval = "yes";
+                db.Booking_Events.Add(e);
+                db.SaveChanges();
+
+            }
+
+
+            return View(stu);
+
+        }
+      
+
+       
+       
 
 
 

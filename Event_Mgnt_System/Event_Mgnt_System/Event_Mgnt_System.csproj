@@ -193,6 +193,7 @@
     <Content Include="Content\images\Logo2.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Pagination.css" />
+    <Content Include="Content\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,6 +252,7 @@
     <Content Include="Views\User\BookEvent.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\WaitPage.cshtml" />
+    <Content Include="Views\Admin\AdminApproval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
