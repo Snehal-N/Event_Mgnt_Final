@@ -83,6 +83,7 @@ namespace Event_Mgnt_System.Controllers
         public ActionResult BookEvent(String Name)
         {
             ViewBag.Name = Name;
+            
 
             return View();
         }
@@ -116,7 +117,8 @@ namespace Event_Mgnt_System.Controllers
 
             db.Booking_Events.Add(bv);
             db.SaveChanges();
-            return RedirectToAction("WaitPage");
+            ModelState.Clear();
+            return View();
 
    }
 
@@ -135,6 +137,21 @@ namespace Event_Mgnt_System.Controllers
 
         public ActionResult Profile()
         {
+            if(Session["User_ID"]!=null)
+             {
+                
+                int uid = Convert.ToInt32(Session["User_ID"]);
+
+                Registration r = db.Registrations.Where(x => x.User_ID == uid).Single();
+                ViewBag.UserName = r.User_Name;
+                ViewBag.city = r.City;
+                ViewBag.Email = r.Email_ID;
+                ViewBag.contact = r.ContactNumber;
+
+
+            }
+
+
             return View();
         }
 

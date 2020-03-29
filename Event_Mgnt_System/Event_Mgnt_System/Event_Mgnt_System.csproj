@@ -193,6 +193,8 @@
     <Content Include="Content\images\Logo2.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Pagination.css" />
+    <Content Include="Content\PopupWiin.css" />
+    <Content Include="Content\images\profile.png" />
     <Content Include="Content\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
