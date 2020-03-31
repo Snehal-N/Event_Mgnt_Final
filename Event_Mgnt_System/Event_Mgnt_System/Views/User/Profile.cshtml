@@ -1,0 +1,137 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Event_Mgnt_System.Models.Booking_Events>
+@{
+    Layout = "~/Views/Shared/_SignupLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title>Profile</title>
+</head>
+<body>
+
+
+    @*<div style="height:600px;width:350px;margin-left:530px;margin-top:200px;font-size:large;
+         border:3px solid black;text-align:center">
+            <img src="~/Content/Images/profile.png" class="img-center" height="160" width="200" />
+
+            <p>
+            <p style="font-size:larger;font-weight:300"> Profile Information:</p><br />
+            UserName:@ViewBag.UserName<br />
+            City:@ViewBag.city
+            </p><br />
+            <p>
+            <p style="font-size:larger;font-weight:300"> Contact Information:</p><br />
+                Contact Number:@ViewBag.contact<br />
+                Email ID:@ViewBag.Email<br />
+            </p>
+            For Booking Information: <a href="">Get Here</a>
+
+        </div>*@
+
+
+
+    <img src="~/Content/Images/profile.png" class="img-center" height="160" width="200" style="margin-left:20px; margin-top:200px" />
+
+    <div style="margin-left:50px; margin-top:20px ;font-family:'Kristen ITC'; font-size:40px">
+
+        Welcome @ViewBag.UserName !!
+    </div>
+
+
+    <div class="panel panel-info" style="Height:200px;width:1000px;margin-left:50px;margin-top:20px;font-size:large; font-weight:200px;font-family:'Lucida Bright';
+         text-align:justify">
+        <div class="panel-heading"> Personal Information</div>
+        <div class="panel-body">
+            Username:@ViewBag.UserName
+            &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;
+            Email:@ViewBag.Email<br><br>
+
+            City:@ViewBag.city
+            &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp; &nbsp;   &nbsp;  &nbsp;  &nbsp;
+            Contact:@ViewBag.contact<br><br>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container" style="height:650px; ">
+
+        <div class="row" style="margin-bottom:40px">
+
+
+            @if (Model != null)
+            {
+
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-2 col-md-2" style="height:100px; margin-top:100px;margin-left:130px">
+                        <div class="panel panel-info" style="Height:400px;width:400px;margin-top:0px;font-size:large; font-weight:200px;font-family:'Lucida Bright';text-align:justify">
+                            <div class="panel-heading"> Booking Information</div>
+                            <div class="panel-body">
+
+
+
+
+
+                                <p>
+                                    Booking ID:@item.Book_ID<br><br>
+                                    Event Booked: @item.Event_Type<br><br>
+
+                                    Event Venue: @item.Venue<br><br>
+
+                                    Event Dates: @item.Event_Date<br><br>
+                                    Event Time: @item.Event_time<br><br>
+
+                                    Approval Status: @item.Approval
+
+                                    @if(@item.Approval=="confir")
+                                    {
+
+                                    <a href="@Url.Action("PackageSelection","User")">
+                                        <button type="button" class="btn btn-success">Select Package</button>
+                                    </a>
+                                    }
+                                </p>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("UserProfile", new { page }))
+        </div>
+    </div>
+
+
+</body>
+</html>
