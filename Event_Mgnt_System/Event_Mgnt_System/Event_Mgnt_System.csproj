@@ -255,6 +255,7 @@
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\WaitPage.cshtml" />
     <Content Include="Views\Admin\AdminApproval.cshtml" />
+    <Content Include="Views\User\PackageSelection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

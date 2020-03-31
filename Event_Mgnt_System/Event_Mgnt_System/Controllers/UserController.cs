@@ -45,7 +45,8 @@ namespace Event_Mgnt_System.Controllers
             r.ContactNumber = uvm.ContactNumber;
             db.Registrations.Add(r);
             db.SaveChanges();
-          return RedirectToAction("Login");
+            ModelState.Clear();
+            return RedirectToAction("Login");
         }
         [HttpGet]
         public ActionResult Login()
@@ -61,6 +62,7 @@ namespace Event_Mgnt_System.Controllers
             {
 
                 Session["User_ID"] = ad.User_ID.ToString();
+                ModelState.Clear();
                 return RedirectToAction("Index");
 
             }
@@ -69,6 +71,7 @@ namespace Event_Mgnt_System.Controllers
                 ViewBag.error = "Invalid username or password";
 
             }
+            ModelState.Clear();
             return View();
         }
 
@@ -102,6 +105,7 @@ namespace Event_Mgnt_System.Controllers
             bv.Guest_Number = ev.Guest_Number;
             bv.email = ev.email;
             bv.Event_Type =Name;
+            bv.Approval = "Wait";
 
 
             if(r!=null)
@@ -135,12 +139,13 @@ namespace Event_Mgnt_System.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Profile()
+        public ActionResult Profile(int ? page)
         {
-            if(Session["User_ID"]!=null)
+            
+            if (Session["User_ID"]!=null)
              {
                 
-                int uid = Convert.ToInt32(Session["User_ID"]);
+              int uid = Convert.ToInt32(Session["User_ID"]);
 
                 Registration r = db.Registrations.Where(x => x.User_ID == uid).Single();
                 ViewBag.UserName = r.User_Name;
@@ -149,7 +154,40 @@ namespace Event_Mgnt_System.Controllers
                 ViewBag.contact = r.ContactNumber;
 
 
+          
+
+
+
             }
+            if(Session["User_ID"]!=null)
+            {
+                int uid = Convert.ToInt32(Session["User_ID"]);
+                int pagesize = 9, pageindex = 1;
+                pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+
+                var list = db.Booking_Events.Where(x => x.User_ID == uid).OrderByDescending(x => x.Event_Date).ToList();
+
+                IPagedList<Booking_Events> stu = list.ToPagedList(pageindex, pagesize);
+
+
+                return View(stu);
+
+
+            }
+        
+
+
+            return View();
+
+
+            
+        }
+
+
+        public ActionResult PackageSelection()
+        {
+
+
 
 
             return View();
