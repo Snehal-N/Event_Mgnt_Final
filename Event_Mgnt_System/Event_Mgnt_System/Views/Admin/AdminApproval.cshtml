@@ -1,0 +1,97 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Event_Mgnt_System.Models.Booking_Events>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminApproval</title>
+    <link rel="stylesheet" href="~/Content/table.css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100">
+                        <table>
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">Booking ID</th>
+                                    <th class="column2">Event Name</th>
+                                    <th class="column3">Event Date</th>
+                                    <th class="column4">Event Time</th>
+                                    <th class="column5">Event location</th>
+                                    <th class="column6">User Name</th>
+                                    <th class="column7">Approve</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="column1">@item.Book_ID</td>
+                                            <td class="column2">@item.Event_Type</td>
+                                            <td class="column3">@item.Event_Date</td>
+                                            <td class="column4">@item.Event_time</td>
+                                            <td class="column5">@item.Venue</td>
+                                            <td class="column6">@item.User_Name</td>
+
+
+
+
+                                            <td class="column7">
+
+                                                <a href="@Url.Action("AdminApproval","Admin", new {Id=@item.Book_ID})">
+                                                    <button type="button" class="btn btn-success"> Approve</button>
+                                                </a>
+
+                                            </td>
+
+
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("AdminApproval", new { page }))
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+</body>
+</html>
