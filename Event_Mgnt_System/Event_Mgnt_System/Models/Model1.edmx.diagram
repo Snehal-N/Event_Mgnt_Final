@@ -17,6 +17,7 @@
         <AssociationConnector Association="EventDBModel.FK_Events_ID" ManuallyRouted="false" />
         <AssociationConnector Association="EventDBModel.FK_Package_ID" ManuallyRouted="false" />
         <AssociationConnector Association="EventDBModel.FK_User_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EventDBModel.sysdiagram" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

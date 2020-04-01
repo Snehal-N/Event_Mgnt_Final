@@ -34,5 +34,6 @@ namespace Event_Mgnt_System.Models
         public DbSet<Registration> Registrations { get; set; }
         public DbSet<tbl_admin> tbl_admin { get; set; }
         public DbSet<User_Feedback> User_Feedback { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

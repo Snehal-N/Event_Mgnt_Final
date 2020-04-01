@@ -21,6 +21,7 @@
           <Property Name="Approval" Type="varchar" MaxLength="6" />
           <Property Name="Package_ID" Type="int" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="package_name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="BookingFlowers">
           <Key>
@@ -70,6 +71,16 @@
           <Property Name="ConfirmPassword" Type="varchar" MaxLength="20" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="ContactNumber" Type="numeric" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="tbl_admin">
           <Key>
@@ -134,6 +145,7 @@ warning 6002: The table/view 'EventDB.dbo.User_Feedback' does not have a primary
           <EntitySet Name="FoodItems" EntityType="Self.FoodItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Feedback" EntityType="Self.User_Feedback" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -179,6 +191,7 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
           <NavigationProperty Name="Package" Relationship="Self.FK_Package_ID" FromRole="Booking_Events" ToRole="Packages" />
           <NavigationProperty Name="Registration" Relationship="Self.FK_User_ID" FromRole="Booking_Events" ToRole="Registration" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="package_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="BookingFlower">
           <Key>
@@ -307,7 +320,18 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
             <End Role="Registration" EntitySet="Registrations" />
             <End Role="Booking_Events" EntitySet="Booking_Events" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="EventDBModel.sysdiagram" />
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -317,6 +341,7 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
           <EntitySetMapping Name="Booking_Events">
             <EntityTypeMapping TypeName="EventDBModel.Booking_Events">
               <MappingFragment StoreEntitySet="Booking_Events">
+                <ScalarProperty Name="package_name" ColumnName="package_name" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
@@ -403,6 +428,17 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
                 <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="details" ColumnName="details" />
                 <ScalarProperty Name="fee_img" ColumnName="fee_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EventDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

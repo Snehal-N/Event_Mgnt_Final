@@ -19,6 +19,7 @@
     <NavigationProperty Name="Package" Relationship="Self.FK_Package_ID" FromRole="Booking_Events" ToRole="Packages" />
     <NavigationProperty Name="Registration" Relationship="Self.FK_User_ID" FromRole="Booking_Events" ToRole="Registration" />
     <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="package_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="BookingFlower">
     <Key>
@@ -147,5 +148,16 @@
       <End Role="Registration" EntitySet="Registrations" />
       <End Role="Booking_Events" EntitySet="Booking_Events" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="EventDBModel.sysdiagram" />
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

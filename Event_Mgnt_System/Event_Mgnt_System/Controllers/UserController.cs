@@ -184,14 +184,33 @@ namespace Event_Mgnt_System.Controllers
         }
 
 
-        public ActionResult PackageSelection()
+        public ActionResult PackageSelection(string tp,int bid)
         {
-
-
-
-
-            return View();
+            ViewBag.Bid = bid;
+          
+                return View();
+          
+           
         }
+        public ActionResult Add_Package(string pkname,int bd)
+        {
+            int uid = Convert.ToInt32(Session["User_ID"]);
+            Booking_Events pk = db.Booking_Events.Where(x => x.Book_ID==bd).Single();
+            pk.package_name = pkname;
+            int bid = pk.Book_ID;
+            db.Booking_Events.Add(pk);
+
+            db.SaveChanges();
+            Booking_Events pk2 = db.Booking_Events.Where(x => x.Book_ID == bd).Single();
+            db.Booking_Events.Remove(pk2);
+            db.SaveChanges();
+
+
+
+
+            return RedirectToAction("UserHome");
+        }
+
 
         public ActionResult UserHome()
         {

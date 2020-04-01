@@ -11,6 +11,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" href="~/Content/footer.css" />
     <link rel="stylesheet" href="~/Content/PopupWin.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -78,46 +80,104 @@
 
 
     @RenderBody()
-    <hr />
-    <!-- Site footer -->
-    <footer class="site-footer">
-        <div class="container-fluid" id="foot">
-            <div class="row" style="margin-left:50px">
-                <div class="col-sm-9 col-md-6">
-                    <h6>About <span class="glyphicon glyphicon-registration-mark"></span></h6>
-                    <p class="text-justify">
-                        " Our Company is a wedding and event Management Company running successfully from past few years.
-                        We are classy, rich, flamboyant and pocket friendly organisation that makes client’s dream as our own."
-                    </p>
+
+    @*Site footer
+        <footer class="site-footer">
+            <div class="container-fluid" id="foot">
+                <div class="row" style="margin-left:50px">
+                    <div class="col-sm-9 col-md-6">
+                        <h6>About <span class="glyphicon glyphicon-registration-mark"></span></h6>
+                        <p class="text-justify">
+                            " Our Company is a wedding and event Management Company running successfully from past few years.
+                            We are classy, rich, flamboyant and pocket friendly organisation that makes client’s dream as our own."
+                        </p>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="@Url.Action("Index", "User")"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+                            <li><a href="@Url.Action("Gallery", "Home")"><span class="glyphicon glyphicon-picture"></span> Gallery</a></li>
+                            <li><a href="@Url.Action("Services", "Home")">Services <span class=""></span></a></li>
+
+
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Contact Us</h6>
+                        <ul class="footer-links">
+                            <li><span class="glyphicon glyphicon-envelope"></span> Dreamevent21@gmail.com</li>
+                            <li><span class="glyphicon glyphicon-earphone"></span> Mobile:+91 4521369784</li>
+
+                        </ul>
+                    </div>
+
+
                 </div>
-
-                <div class="col-xs-6 col-md-3">
-                    <h6>Quick Links</h6>
-                    <ul class="footer-links">
-                        <li><a href="@Url.Action("Index", "User")"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li><a href="@Url.Action("About", "Home")"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
-                        <li><a href="@Url.Action("Gallery", "Home")"><span class="glyphicon glyphicon-picture"></span> Gallery</a></li>
-                        <li><a href="@Url.Action("Services", "Home")">Services <span class=""></span></a></li>
-
-
-                    </ul>
-                </div>
-
-                <div class="col-xs-6 col-md-3">
-                    <h6>Contact Us</h6>
-                    <ul class="footer-links">
-                        <li><span class="glyphicon glyphicon-envelope"></span> Dreamevent21@gmail.com</li>
-                        <li><span class="glyphicon glyphicon-earphone"></span> Mobile:+91 4521369784</li>
-
-                    </ul>
-                </div>
-
 
             </div>
 
+        </footer>*@
+
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <img src="~/Content/images/front.png">
+            <h3><span>About</span>Dream</h3>
+
+            <p class="footer-links">
+                <a href=""@Url.Action("Index", "User")"">Home</a>
+                |
+                <a href="@Url.Action("About", "Home")">About</a>
+                |
+                <a href="@Url.Action("Gallery", "Home")">Gallery</a>
+                |
+                <a href="@Url.Action("Services", "Home")">Services</a>
+            </p>
+
+            <p class="footer-company-name">© 2019 Dream Event Pvt. Ltd.</p>
         </div>
 
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p>
+                    <span>
+                        309 - Rupa Solitaire,
+                        Bldg. No. A - 1, Sector - 1
+                    </span>
+                    Mahape, Navi Mumbai - 400710
+                </p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+91 22-27782183</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="#">support@Dreamevent.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Our Company is a wedding and event Management Company running successfully from past few years.
+                We are classy, rich, flamboyant and pocket friendly organisation that makes client’s dream as our own.
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
     </footer>
+
 
 
 

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Booking_Events">
       <EntityTypeMapping TypeName="EventDBModel.Booking_Events">
         <MappingFragment StoreEntitySet="Booking_Events">
+          <ScalarProperty Name="package_name" ColumnName="package_name" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
@@ -90,6 +91,17 @@
           <ScalarProperty Name="rating" ColumnName="rating" />
           <ScalarProperty Name="details" ColumnName="details" />
           <ScalarProperty Name="fee_img" ColumnName="fee_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EventDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
