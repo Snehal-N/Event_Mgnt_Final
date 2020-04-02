@@ -14,7 +14,7 @@
 
     #main-div {
         height: 900px;
-        background-image: url('../../Content/img/building6.jpg');
+        
         background-size: 100% 900px;
     }
 
@@ -37,6 +37,45 @@
         text-align: center;
         font-size: 14px;
     }
+
+
+    body {
+        margin: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin-top: 20px;
+        padding: 0px;
+        width: 20%;
+        height: 40%;
+        background-color: #555;
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        height: 100%;
+        overflow: auto;
+        font-size: 24px;
+        font-family: 'Arial Unicode MS';
+        line-height: 70px;
+    }
+
+    li a {
+        display: block;
+        color: White;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        li a.active {
+            background-color: black;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #f1f1f1;
+            color: black;
+        }
 </style>
 
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -50,12 +89,25 @@
 <div id="main-div">
     <div id="box" class="img-responsive">
 
-        @using (@Html.BeginForm("Create","Admin",FormMethod.Post,new {enctype="multipart/form-data" }))
+        <div>
+            <ul>
+                <li><a>@Html.ActionLink("See Event", "ViewEvents", "Admin", new { @class = "" })</a></li>
+                <li><a>@Html.ActionLink("Add Event", "Create", "Admin")</a></li>
+                <li><a>@Html.ActionLink("Approve Booking", "AdminApproval", "Admin")</a></li>
+                <li><a>@Html.ActionLink("See Feedback", "SeeFeedback", "Admin")</a></li>
+
+            </ul>
+
+        </div>
+
+
+
+        @using (@Html.BeginForm("Create", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="insidebox">
                 <div> <h3>ADD Event</h3></div>
 
-
+                <br />
 
 
                 <div class="form-group">
@@ -66,41 +118,37 @@
 
                     </div>
                     <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_Type) </span>
-                    </div>
+                </div>
+
+                <br />
+
+
+
+                <p class="contact"><label for="EventType">Select Image:</label></p>
+                <input type="file" name="imgfile" id="imgfile" required="required" />
+
+
+                <br />
+                <br />
 
 
 
                 <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon"></div>
 
-                        <p class="contact"><label for="EventType">Image:</label></p>
-                        <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+                    <input type="submit" value="Add Event" class="btn btn-success btn-block" style="background-color:slategrey" />
 
-                    </div>
+                </div>
 
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
                 </div>
 
 
 
+            </div>
 
-
-                        <div class="form-group">
-
-                            <input type="submit" value="Add Event" class="btn btn-success btn-block" />
-
-                        </div>
-
-                        <div class="form-group">
-                            <p style="color:red">@ViewBag.error</p>
-                        </div>
-
-
-
-                    </div>
-
-                    }
-                </div>
+        }
+    </div>
 
 </div>
 

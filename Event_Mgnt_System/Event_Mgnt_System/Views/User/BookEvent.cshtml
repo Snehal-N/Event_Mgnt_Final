@@ -23,6 +23,11 @@
 </head>
 
 <style>
+    body{
+         background-color: whitesmoke;
+
+    }
+
     #box {
     }
 
@@ -34,13 +39,13 @@
     .insidebox {
         border: 1px solid black;
         margin: 20% auto 10% auto;
-        max-width: 500px;
-        min-width: 200px;
-        padding-left: 60px;
-        padding-right: 60px;
+        width:700px;
+        
+        padding-left:170px;
+        
         border-radius: 10px;
-        background-color: whitesmoke;
-        margin-top:200px;
+           background-color:white;
+        margin-top:180px;
         
     }
 
@@ -61,99 +66,101 @@
 
             @using (@Html.BeginForm("BookEvent", "User", new { Name = @ViewBag.Name }, FormMethod.Post))
             {
-                <div class="insidebox">
-                    <div> <h3>Book Event</h3></div>
+            <div class="insidebox">
+                <div> <h3 style="margin-left: 80px; font-weight: 300px; font-family: Bahnschrift">Complete Booking</h3></div>
+
+
+                <br />
 
 
 
-
-
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                            @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
-                            @Html.TextBoxFor(x => x.email, new { @class = "form-control", @placeholder = "EmailId" })
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.email) </span>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></div>
-                            @Html.TextBoxFor(x => x.Event_Type, new { @class = "form-control",Value = @ViewBag.Name})
-                            @*@Html.DropDownListFor(x=>x.Event_Type, ViewBag.eventlist as SelectList,"------select-----",new {@class="form-control"})*@
-
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_Type) </span>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
-                            @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
-                            @Html.TextBoxFor(x => x.Venue, new { @class = "form-control", @placeholder = "Venue" })
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.Venue) </span>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
-                            @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" equired="required"></asp:TextBox>*@
-                            @Html.TextBoxFor(x => x.Event_Date, new { @class = "form-control", @placeholder = "Event Date " })
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_Date) </span>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-hourglass"></span></div>
-                            @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
-                            @Html.TextBoxFor(x => x.Event_time, new { @class = "form-control", @placeholder = "Event Time" })
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_time) </span>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-check"></span></div>
-                            @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
-                            @Html.TextBoxFor(x => x.Guest_Number, new { @class = "form-control", @placeholder = "Guest Number" })
-
-                        </div>
-                        <span style="color:red">   @Html.ValidationMessageFor(x => x.Guest_Number) </span>
-                    </div>
-
-                    <div class="form-group">
-
-                        @if (!IsPost)
-                        {
-                            <input type="submit" value="Send Details" class="btn btn-default btn-block" />
-                        }
-                        else
-                        {
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target=".bootstrapmodal">Book Now</a>
-                        }
-
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
+                        @Html.TextBoxFor(x => x.email, new { @class = "form-control", @placeholder = "EmailId" })
 
                     </div>
-
-                    <div class="form-group">
-                        <p style="color:red">@ViewBag.error</p>
-                    </div>
-
-
-
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.email) </span>
                 </div>
+                <br />
+
+                <div class="form-group">
+                    <div class="input-group">
+
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></div>
+                        @Html.TextBoxFor(x => x.Event_Type, new { @class = "form-control", Value = @ViewBag.Name, @placeholder = "Event Name" })
+                        @*@Html.DropDownListFor(x=>x.Event_Type, ViewBag.eventlist as SelectList,"------select-----",new {@class="form-control"})*@
+
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_Type) </span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
+                        @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
+                        @Html.TextBoxFor(x => x.Venue, new { @class = "form-control", @placeholder = "Venue" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Venue) </span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                        @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" equired="required"></asp:TextBox>*@
+                        @Html.TextBoxFor(x => x.Event_Date, new { @class = "form-control", @placeholder = "Event Date " })
+
+                    </div>
+                    <span style="color: red">   @Html.ValidationMessageFor(x => x.Event_Date) </span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-hourglass"></span></div>
+                        @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
+                        @Html.TextBoxFor(x => x.Event_time, new { @class = "form-control", @placeholder = "Event Time" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Event_time) </span>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-check"></span></div>
+                        @*<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" required="required"></asp:TextBox>*@
+                        @Html.TextBoxFor(x => x.Guest_Number, new { @class = "form-control", @placeholder = "Guest Number" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Guest_Number) </span>
+                </div>
+
+                <br />
+                <div class="form-group">
+
+
+                    <input type="submit" value="Book Now" class="btn btn-default btn-block " style="text-align:center; background-color:darkslategrey;color:white" />
+                </div>
+
+
+                <br />
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+
+
+            </div>
 
             }
         </div>
@@ -162,48 +169,6 @@
 
 
 
- <div class="modal fade bootstrapmodal" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title" >
-                      
-                    </div>
-                    <button data-dismiss="modal" class="close"><span> &times;</span> </button>
-
-
-
-
-                </div>
-                <div class="modal-body" style="width:400px;height:200px">
-                  
-
-                    <span style="color:black; font-size:x-large">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                        Thank you for Booking with us!!
-                    </span>
-                    <br /><br />
-                    <p style="color:black; font-size:large;font-weight:300">Your Application Send for Approval!!
-                    <br /></br><br />
-
-                    Wait for Confirmation!
-                    </p>
-
-
-
-
-                </div>
-                <div class="modal-footer" style="text-align:left">
-                    Contact:
-                    <span class="glyphicon glyphicon-envelope"> Dreamevent21@gmail.com</span>&nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-earphone">  91 4521369784</span>
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
 
 
 

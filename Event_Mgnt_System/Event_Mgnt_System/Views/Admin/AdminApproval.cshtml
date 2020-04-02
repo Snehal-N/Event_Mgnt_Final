@@ -11,86 +11,151 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>AdminApproval</title>
-    <link rel="stylesheet" href="~/Content/table.css" />
+
+    
+    <link rel="stylesheet" href="~/Content/table2.css" />
+    
+    <link rel="stylesheet" href="~/Content/Pagination.css" />
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+
+        ul {
+            list-style-type: none;
+            margin-top: 20px;
+            padding: 0px;
+            width: 20%;
+            height: 40%;
+            background-color: #555;
+            position: fixed;
+            left: 0%;
+            top: 0%;
+            height: 100%;
+            overflow: auto;
+            font-size: 24px;
+            font-family: 'Arial Unicode MS';
+            line-height: 70px;
+        }
+
+        li a {
+            display: block;
+            color: White;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+            li a.active {
+                background-color: black;
+                color: white;
+            }
+
+            li a:hover:not(.active) {
+                background-color: #f1f1f1;
+                color: black;
+            }
+
+        #wel {
+            margin-left: 500px;
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: 'Arial Unicode MS';
+        }
+
+        #content {
+            margin-left: 400px;
+            margin-top: 20px;
+            height: 600px;
+            width: 700px;
+            font-size: 20px;
+            font-family: 'Arial Unicode MS';
+            border: 1px solid black;
+        }
+    </style>
 
 </head>
 <body>
     <div>
+        <ul>
+            <li><a>@Html.ActionLink("See Event", "ViewEvents", "Admin", new { @class = "" })</a></li>
+            <li><a>@Html.ActionLink("Add Event", "Create", "Admin")</a></li>
+            <li><a>@Html.ActionLink("Approve Booking", "AdminApproval", "Admin")</a></li>
+            <li><a>@Html.ActionLink("See Feedback", "SeeFeedback", "Admin")</a></li>
 
-        <div class="limiter">
-            <div class="container-table100">
-                <div class="wrap-table100">
-                    <div class="table100">
-                        <table>
-                            <thead>
-                                <tr class="table100-head">
-                                    <th class="column1">Booking ID</th>
-                                    <th class="column2">Event Name</th>
-                                    <th class="column3">Event Date</th>
-                                    <th class="column4">Event Time</th>
-                                    <th class="column5">Event location</th>
-                                    <th class="column6">User Name</th>
-                                    <th class="column7">Approve</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td class="column1">@item.Book_ID</td>
-                                            <td class="column2">@item.Event_Type</td>
-                                            <td class="column3">@item.Event_Date</td>
-                                            <td class="column4">@item.Event_time</td>
-                                            <td class="column5">@item.Venue</td>
-                                            <td class="column6">@item.User_Name</td>
-
-
-
-
-                                            <td class="column7">
-
-                                                <a href="@Url.Action("AdminApproval","Admin", new {Id=@item.Book_ID})">
-                                                    <button type="button" class="btn btn-success"> Approve</button>
-                                                </a>
-
-                                            </td>
-
-
-                                        </tr>
-                                    }
-                                }
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
+        </ul>
 
     </div>
 
-    <div id="container" style="margin-left: 20px">
-        <p></p>
-        <p></p>
+
+
+    <div style="margin-top:200px; height:600px; width:1000px;margin-left:400px;">
+
+
+        <div class="table100">
+            <table>
+                <thead>
+                    <tr class="table100-head">
+                        <th class="column1">Booking ID</th>
+                        <th class="column2">Event Name</th>
+                        <th class="column3">Event Date</th>
+                        <th class="column4">Event Time</th>
+                        <th class="column5">Event location</th>
+                        <th class="column6">User Name</th>
+                        <th class="column7">Approve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="column1">@item.Book_ID</td>
+                                <td class="column2">@item.Event_Type</td>
+                                <td class="column3">@item.Event_Date</td>
+                                <td class="column4">@item.Event_time</td>
+                                <td class="column5">@item.Venue</td>
+                                <td class="column6">@item.User_Name</td>
+
+
+
+
+                                <td class="column7">
+
+                                    <a href="@Url.Action("AdminApproval","Admin", new{Id=@item.Book_ID})">
+                                        <button type="button" class="btn btn-success"> Approve</button>
+                                    </a>
+
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    @*<div id="container" style="margin-left:600px">
+      
         <div class="pagination" style="margin-left: 400px">
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
             of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("AdminApproval", new { page }))
         </div>
-    </div>
+    </div>*@
 
 
-    @Scripts.Render("~/bundles/bootstrap")
 
 
 </body>

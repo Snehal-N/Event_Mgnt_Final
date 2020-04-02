@@ -184,7 +184,7 @@ namespace Event_Mgnt_System.Controllers
         }
 
 
-        public ActionResult PackageSelection(string tp,int bid)
+        public ActionResult PackageSelection(string tp,int ?bid)
         {
             ViewBag.Bid = bid;
           
@@ -192,7 +192,7 @@ namespace Event_Mgnt_System.Controllers
           
            
         }
-        public ActionResult Add_Package(string pkname,int bd)
+        public ActionResult Add_Package(string pkname,int ?bd)
         {
             int uid = Convert.ToInt32(Session["User_ID"]);
             Booking_Events pk = db.Booking_Events.Where(x => x.Book_ID==bd).Single();

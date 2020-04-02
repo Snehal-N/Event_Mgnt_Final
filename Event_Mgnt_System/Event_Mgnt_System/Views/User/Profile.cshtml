@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<Event_Mgnt_System.Models.Booking_Events>
 @{
-    Layout = "~/Views/Shared/_SignupLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 <!DOCTYPE html>
@@ -17,35 +17,19 @@
 <body>
 
 
-    @*<div style="height:600px;width:350px;margin-left:530px;margin-top:200px;font-size:large;
-         border:3px solid black;text-align:center">
-            <img src="~/Content/Images/profile.png" class="img-center" height="160" width="200" />
-
-            <p>
-            <p style="font-size:larger;font-weight:300"> Profile Information:</p><br />
-            UserName:@ViewBag.UserName<br />
-            City:@ViewBag.city
-            </p><br />
-            <p>
-            <p style="font-size:larger;font-weight:300"> Contact Information:</p><br />
-                Contact Number:@ViewBag.contact<br />
-                Email ID:@ViewBag.Email<br />
-            </p>
-            For Booking Information: <a href="">Get Here</a>
-
-        </div>*@
+   
 
 
 
-    <img src="~/Content/Images/profile.png" class="img-center" height="160" width="200" style="margin-left:20px; margin-top:200px" />
+    <img src="~/Content/Images/profile.png" class="img-center" height="160" width="200" style="margin-left:550px; margin-top:200px" />
 
-    <div style="margin-left:50px; margin-top:20px ;font-family:'Kristen ITC'; font-size:40px">
+    <div style="margin-left:550px; margin-top:20px ;font-family:Bahnschrift; font-size:40px">
 
         Welcome @ViewBag.UserName !!
     </div>
 
 
-    <div class="panel panel-info" style="Height:200px;width:1000px;margin-left:50px;margin-top:20px;font-size:large; font-weight:200px;font-family:'Lucida Bright';
+    <div class="panel panel-info" style="Height:200px;width:1150px;margin-left:170px;margin-top:20px;font-size:large; font-weight:200px;font-family:'Lucida Bright';
          text-align:justify">
         <div class="panel-heading"> Personal Information</div>
         <div class="panel-body">
@@ -66,31 +50,39 @@
 
 
 
-    <div class="container" style="height:650px; ">
+    <div class="container" style="height:650px; border:1px solid black;">
 
-        <div class="row" style="margin-bottom:40px">
+        <div style="height:50px;width:1150px;background-color:rgb(179, 217, 255);border-radius: 5px 5px 5px 5px;
+          font-size:20px;font-family:Bahnschrift;text-align:center">Booking information</div>
+
+      
+
+            <div class="row" style="margin-bottom:40px">
 
 
-            @if (Model != null)
-            {
-                
-                foreach (var item in Model)
+                @if (Model != null)
                 {
 
-                    <div class="col-lg-2 col-md-2" style="height:100px; margin-top:100px;margin-left:130px">
-                        <div class="panel panel-info" style="Height:400px;width:400px;margin-top:0px;font-size:large; font-weight:200px;font-family:'Lucida Bright';text-align:justify">
-                            <div class="panel-heading"> Booking Information</div>
-                            <div class="panel-body">
+                    foreach (var item in Model)
+                    {
 
 
 
 
+                        <div class="col-lg-4 col-md-4" style="height:400px; width:300px; margin-top:80px;margin-left:10px;">
 
-                                <p>
+                            <div style="height:100%; width:100%; border:1px solid black;border-radius: 5px 5px 5px 5px;
+                  margin-left:70px;font-weight:500px;font-size:15px;background-color:white">
+
+                                <div style="padding:0px;height:50px;width:267px;background-color:rgb(179, 217, 255);
+                     border-radius: 5px 5px 5px 5px"></div>
+
+
+                                <p style="padding-left:50px;padding-top:30px">
                                     Booking ID:@item.Book_ID<br><br>
 
-                                  
-                                    
+
+
                                     Event Booked: @item.Event_Type<br><br>
 
                                     Event Venue: @item.Venue<br><br>
@@ -100,42 +92,46 @@
 
                                     Approval Status: @item.Approval
 
-                                    @if(@item.Approval=="confir" && @item.Book_ID!=null)
-                                     {
-                                             
-                                    <a href="@Url.Action("PackageSelection","User", new {name="yes",id=item.Book_ID})">
-                                        <button type="button" class="btn btn-success">Select Package</button>
-                                    </a>
+                                    @if (@item.Approval == "confir" && @item.Book_ID != null)
+                                    {
+                                        <br />
+                                        <br />
+                                        <a href="@Url.Action("PackageSelection","User", new {name="yes",id=item.Book_ID})">
+                                            <button type="button" class="btn btn-success">Select Package</button>
+                                        </a>
                                     }
 
                                 </p>
 
 
-
                             </div>
 
+
+
                         </div>
-                    </div>
 
+
+
+
+                    }
                 }
-            }
 
 
+
+            </div>
 
         </div>
 
-    </div>
 
 
-
-    <div id="container" style="margin-left: 20px">
-        <p></p>
-        <p></p>
-        <div class="pagination" style="margin-left: 400px">
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("UserProfile", new { page }))
+        <div id="container" style=" margin-left: 20px">
+            <p></p>
+            <p></p>
+            <div class="pagination" style="margin-left:300px">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("UserProfile", new { page }))
+            </div>
         </div>
-    </div>
 
 
 </body>
