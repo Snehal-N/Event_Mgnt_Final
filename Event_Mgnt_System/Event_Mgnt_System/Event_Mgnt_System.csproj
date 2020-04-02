@@ -198,11 +198,18 @@
     <Content Include="Content\images\Logo2.png" />
     <Content Include="Content\images\Platinum.jpg" />
     <Content Include="Content\images\silver.jpg" />
+    <Content Include="Content\images\slide2.jpg" />
+    <Content Include="Content\images\slide3.jpg" />
+    <Content Include="Content\images\slide4.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Pagination.css" />
     <Content Include="Content\PopupWiin.css" />
     <Content Include="Content\images\profile.png" />
+    <Content Include="Content\slide2.jpg" />
+    <Content Include="Content\slide3.jpg" />
+    <Content Include="Content\slide4.jpg" />
     <Content Include="Content\table.css" />
+    <Content Include="Content\slider.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -250,19 +257,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\ViewEvents.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
-    <Content Include="Views\Shared\_SignupLayoutPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\User\BookEvent.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
-    <Content Include="Views\User\WaitPage.cshtml" />
     <Content Include="Views\Admin\AdminApproval.cshtml" />
     <Content Include="Views\User\PackageSelection.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
+    <Content Include="Views\Admin\SeeFeedback.cshtml" />
+    <Content Include="Views\User\Feedback.cshtml" />
+    <Content Include="Views\User\Thanks.cshtml" />
+    <Content Include="Views\User\ThanksFeed.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

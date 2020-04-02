@@ -27,7 +27,7 @@ namespace Event_Mgnt_System.Controllers
             {
 
                 Session["ad_id"] = ad.ad_id.ToString();
-                return RedirectToAction("Create");
+                return RedirectToAction("AdminHome");
 
             }
             else
@@ -37,7 +37,23 @@ namespace Event_Mgnt_System.Controllers
             }
             return View();
         }
+        public ActionResult AdminHome()
+        {
+            if (Session["ad_id"]!=null)
+             {
+                int aid = Convert.ToInt32(Session["ad_id"]);
+                tbl_admin ta = db.tbl_admin.Where(x => x.ad_id == aid).Single();
+                ViewBag.adname = ta.ad_username;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
 
+            }
+
+         
+        }
         public ActionResult Create()
         {
             if (Session["ad_id"] == null)
@@ -126,7 +142,11 @@ namespace Event_Mgnt_System.Controllers
 
         }
       
+        public ActionResult SeeFeedback()
+        {
 
+            return View();
+        }
        
        
 

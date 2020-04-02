@@ -211,7 +211,19 @@ namespace Event_Mgnt_System.Controllers
             return RedirectToAction("UserHome");
         }
 
+        public ActionResult Feedback()
+        {
+            return View();
+        }
 
+        public ActionResult ThanksFeed()
+        {
+            return View();
+        }
+        public ActionResult Thanks()
+        {
+            return View();
+        }
         public ActionResult UserHome()
         {
             return View();

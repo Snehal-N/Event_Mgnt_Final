@@ -2,7 +2,7 @@
 @model Event_Mgnt_System.Models.Booking_Events
 
 @{
-    Layout = "~/Views/Shared/_SignupLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 <html>
 <head>
@@ -83,7 +83,7 @@
                         <div class="input-group">
 
                             <div class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></div>
-                            @Html.TextBoxFor(x => x.Event_Type, new { @class = "form-control", Value = @ViewBag.Name })
+                            @Html.TextBoxFor(x => x.Event_Type, new { @class = "form-control",Value = @ViewBag.Name})
                             @*@Html.DropDownListFor(x=>x.Event_Type, ViewBag.eventlist as SelectList,"------select-----",new {@class="form-control"})*@
 
 
