@@ -227,8 +227,20 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\footer.css" />
+    <Content Include="Content\Gallery.css" />
+    <Content Include="Content\images\adbg.jpg" />
     <Content Include="Content\images\Copper.jpg" />
     <Content Include="Content\images\front.png" />
+    <Content Include="Content\images\Galleryimages\a1.jpg" />
+    <Content Include="Content\images\Galleryimages\about.jpg" />
+    <Content Include="Content\images\Galleryimages\b2.jpg" />
+    <Content Include="Content\images\Galleryimages\bs1.jpg" />
+    <Content Include="Content\images\Galleryimages\c1.jpg" />
+    <Content Include="Content\images\Galleryimages\ce1.jpg" />
+    <Content Include="Content\images\Galleryimages\e1.jpg" />
+    <Content Include="Content\images\Galleryimages\ee1.jpg" />
+    <Content Include="Content\images\Galleryimages\g1.jpg" />
+    <Content Include="Content\images\Galleryimages\s1.jpg" />
     <Content Include="Content\images\gold decoration.jpg" />
     <Content Include="Content\images\Logo.png" />
     <Content Include="Content\images\Logo2.png" />
@@ -242,6 +254,7 @@
     <Content Include="Content\Pagination.css" />
     <Content Include="Content\PopupWiin.css" />
     <Content Include="Content\images\profile.png" />
+    <Content Include="Content\services.css" />
     <Content Include="Content\slide2.jpg" />
     <Content Include="Content\slide3.jpg" />
     <Content Include="Content\slide4.jpg" />
@@ -313,6 +326,7 @@
     <Content Include="Views\User\ThanksFeed.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\User\Add_Package.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

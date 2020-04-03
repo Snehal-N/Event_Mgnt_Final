@@ -23,8 +23,19 @@ namespace Event_Mgnt_System.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+           
             return View();
+        }
+        public ActionResult Services()
+        {
+            return View();
+
+        }
+
+        public ActionResult Gallery()
+        {
+            return View();
+
         }
     }
 }

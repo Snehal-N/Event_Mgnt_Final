@@ -5,159 +5,196 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-
-<style>
-    #box {
-     }
-
-    #main-div {
-        height:500px;
-       
-     
-    }
-
-    .insidebox {
-        border: 1px solid black;
-        margin: 10% auto 10% auto;
-        width: 600px;
-        
-        padding-left: 120px;
-        
-        border-radius: 10px;
-       //background-color: whitesmoke;
-        margin-top:180px;
-    }
- 
-    div h1 {
-        text-align: center;
-    }
-
-    p#para {
-        text-align: center;
-        font-size: 14px;
-    }
-</style>
-
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <head>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
 
 
 
+        <style>
 
-<script src="js/bootstrap.min.js"></script>
-<script src="http://code.jquery.com/jquery.js"></script>
+            body {
+                background-color: whitesmoke;
+            }
 
-<div id="main-div">
-    <div id="box" class="img-responsive">
+            #box {
+                height: 40%;
+            }
 
-        @using (@Html.BeginForm("Signup", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-       
-         
-           
+            #main-div {
+                height: 500px;
+            }
 
+            .insidebox {
+                border: 1px solid black;
+                margin: 10% auto 10% auto;
+                width: 600px;
+                padding-left: 120px;
+                border-radius: 10px;
+                background-color: white;
+                margin-top: 180px;
+            }
 
-        <div class="insidebox">
-            <div> <h3 style="margin-left:100px; font-weight:300px; font-family:Bahnschrift">Registration</h3></div>
-            <br>
+            div h1 {
+                text-align: center;
+            }
+
+            p#para {
+                text-align: center;
+                font-size: 14px;
+            }
+        </style>
 
 
 
 
-
-            <div class="form-group">
-                <div class="input-group" style="width:500px">
+    </head>
 
 
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                    @Html.TextBoxFor(x => x.User_Name, new { @class = "form-control", @placeholder = "User Name", style = "Width:200%" })
+
+<body>
+
+    <div id="main-div">
+        <div id="box" class="img-responsive">
+
+            @using (@Html.BeginForm("Signup", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+
+
+
+
+            <div class="insidebox">
+                <div> <h3 style="margin-left:100px; font-weight:300px; font-family:Bahnschrift">Registration</h3></div>
+                <br>
+
+
+
+
+
+                <div class="form-group">
+                    <div class="input-group" style="width:500px">
+
+
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        @Html.TextBoxFor(x => x.User_Name,new { @class = "form-control", @placeholder = "User Name"})
+
+                    </div>
+                    <span style="color:red">@Html.ValidationMessageFor(x => x.User_Name) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+
+                <br>
+                <div class="form-group" id="email">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+
+                        @Html.TextBoxFor(x => x.Email_ID, new { @class = "form-control", @placeholder = "EmailId" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Email_ID) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.Password) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+
+                        @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.ConfirmPassword) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
+
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-control", @placeholder = "City" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.City) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></div>
+
+                        @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control", @placeholder = "Contact Number" })
+
+                    </div>
+                    <span style="color:red">@Html.ValidationMessageFor(x => x.ContactNumber) </span>
+                </div>
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+
+
+
+                <br><br>
+                <div class="form-group">
+
+                    <input type="submit" value="SignUP" class="btn btn-success btn-block" style="text-align:center; background-color:darkslategrey" />
 
                 </div>
-                <span style="color:red">@Html.ValidationMessageFor(x => x.User_Name) </span>
-            </div>
 
-            <br>
-            <div class="form-group" id="email">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-
-                    @Html.TextBoxFor(x => x.Email_ID, new { @class = "form-control", @placeholder = "EmailId" })
-
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
                 </div>
-                <span style="color:red">   @Html.ValidationMessageFor(x => x.Email_ID) </span>
-            </div>
-            <br>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
 
-                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
 
-                </div>
-                <span style="color:red">   @Html.ValidationMessageFor(x => x.Password) </span>
-            </div>
-            <br>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
 
-                    @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
-
-                </div>
-                <span style="color:red">   @Html.ValidationMessageFor(x => x.ConfirmPassword) </span>
-            </div>
-            <br>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
-
-                    @Html.TextBoxFor(x => x.City, new { @class = "form-control", @placeholder = "City" })
-
-                </div>
-                <span style="color:red">   @Html.ValidationMessageFor(x => x.City) </span>
-            </div>
-
-            <br>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></div>
-
-                    @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control", @placeholder = "Contact Number" })
-
-                </div>
-                <span style="color:red">   @Html.ValidationMessageFor(x => x.ContactNumber) </span>
-            </div>
-
-            <br><br>
-            <div class="form-group">
-
-                <input type="submit" value="SignUP" class="btn btn-success btn-block" style="text-align:center; background-color:darkslategrey" />
 
             </div>
 
-            <div class="form-group">
-                <p style="color:red">@ViewBag.error</p>
-            </div>
-
-
-
-
+            }
         </div>
 
-        }
     </div>
 
-</div>
+
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 
 
-<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+
 
 
