@@ -37,7 +37,7 @@
                 min-width: 200px;
                 padding-left: 90px;
                 padding-right: 60px;
-                border-radius: 10px;
+                border-radius: 5px;
                 background-color: white;
                 margin-top: 250px;
             }
@@ -72,7 +72,7 @@
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
 
-                    @Html.TextBoxFor(x => x.User_Name, new { @class = "form-control", @placeholder = "Username" })
+                    @Html.TextBoxFor(x => x.User_Name, new { @class = "form-control", @placeholder = "Username"  })
 
                 </div>
                 <span style="color:red">   @Html.ValidationMessageFor(x => x.User_Name) </span>

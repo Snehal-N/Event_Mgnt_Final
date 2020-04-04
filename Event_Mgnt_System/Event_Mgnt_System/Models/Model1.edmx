@@ -46,6 +46,14 @@
           <Property Name="event_image" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="int" Nullable="false" />
+          <Property Name="uname" Type="varchar" MaxLength="50" />
+          <Property Name="Details" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="FoodItems">
           <Key>
             <PropertyRef Name="Food_ID" />
@@ -142,6 +150,7 @@ warning 6002: The table/view 'EventDB.dbo.User_Feedback' does not have a primary
           <EntitySet Name="BookingFlowers" EntityType="Self.BookingFlowers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DecorationEquipments" EntityType="Self.DecorationEquipments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodItems" EntityType="Self.FoodItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
@@ -321,6 +330,7 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
             <End Role="Booking_Events" EntitySet="Booking_Events" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="EventDBModel.sysdiagram" />
+          <EntitySet Name="feedbacks" EntityType="EventDBModel.feedback" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -331,6 +341,14 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Int32" Nullable="false" />
+          <Property Name="uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -439,6 +457,15 @@ FROM [dbo].[User_Feedback] AS [User_Feedback]</DefiningQuery>
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacks">
+            <EntityTypeMapping TypeName="EventDBModel.feedback">
+              <MappingFragment StoreEntitySet="feedback">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="uname" ColumnName="uname" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

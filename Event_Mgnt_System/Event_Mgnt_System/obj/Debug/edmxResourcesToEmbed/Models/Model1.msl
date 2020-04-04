@@ -105,5 +105,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="feedbacks">
+      <EntityTypeMapping TypeName="EventDBModel.feedback">
+        <MappingFragment StoreEntitySet="feedback">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

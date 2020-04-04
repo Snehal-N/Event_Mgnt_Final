@@ -142,10 +142,20 @@ namespace Event_Mgnt_System.Controllers
 
         }
       
-        public ActionResult SeeFeedback()
+        public ActionResult SeeFeedback(int? page)
         {
 
-            return View();
+
+            
+
+            int pagesize = 9, pageindex = 1;
+            pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+
+            var list = db.feedbacks.Where(x => x.Details !=null).OrderByDescending(x => x.Uid).ToList();
+
+            IPagedList<feedback> stu = list.ToPagedList(pageindex, pagesize);
+
+            return View(stu);
         }
        
        

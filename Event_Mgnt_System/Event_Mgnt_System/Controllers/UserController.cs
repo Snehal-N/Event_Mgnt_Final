@@ -85,10 +85,19 @@ namespace Event_Mgnt_System.Controllers
         
         public ActionResult BookEvent(String Name)
         {
-            ViewBag.Name = Name;
-            
+            if(Session["User_ID"]!=null)
+            {
+                ViewBag.Name = Name;
 
-            return View();
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
+          
         }
 
         [HttpPost]
@@ -122,7 +131,7 @@ namespace Event_Mgnt_System.Controllers
             db.Booking_Events.Add(bv);
             db.SaveChanges();
             ModelState.Clear();
-            return View();
+            return View("Thanks");
 
    }
 
@@ -219,12 +228,46 @@ namespace Event_Mgnt_System.Controllers
 
 
 
-            return RedirectToAction("UserHome");
+            return RedirectToAction("Profile");
         }
 
         public ActionResult Feedback()
         {
-            return View();
+            if (Session["User_ID"] != null)
+            {
+               return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
+
+
+           
+        }
+
+        [HttpPost]
+        public ActionResult Feedback(feedback ufe)
+        {
+            int uid=Convert.ToInt32(Session["User_ID"]);
+            Registration r = db.Registrations.Where(x => x.User_ID == uid).Single();
+            string uname = r.User_Name;
+            feedback uf = new feedback();
+            uf.Uid = uid;
+            
+            uf.uname= uname;
+            uf.Details = ufe.Details;
+            db.feedbacks.Add(uf);
+            db.SaveChanges();
+            
+         
+              return RedirectToAction("Login");
+            
+
+
+
+
         }
 
         public ActionResult ThanksFeed()
